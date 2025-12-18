@@ -30,17 +30,23 @@ DEFAULT_CATEGORIES = [
 # -------------------------------
 # INICIALIZAR FIREBASE (SIN CAMBIOS)
 # -------------------------------
+import json
+
 try:
-    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-    cred = credentials.Certificate(
-        os.path.join(BASE_DIR, "firebase_credentials.json")
-    )
+    firebase_json = os.environ.get("FIREBASE_CREDENTIALS")
+
+    if not firebase_json:
+        raise ValueError("Variable de entorno FIREBASE_CREDENTIALS no encontrada")
+
+    cred = credentials.Certificate(json.loads(firebase_json))
     firebase_admin.initialize_app(cred)
     db = firestore.client()
     print("✅ Conexión a Firestore establecida con éxito.")
 
 except Exception as e:
     print("❌ Error al conectar con Firestore:", e)
+    db = None
+
 
 
 # -------------------------------
