@@ -4,3 +4,4 @@ firebase-admin
 gunicorn
 reportlab
 pytz
+flasgger
