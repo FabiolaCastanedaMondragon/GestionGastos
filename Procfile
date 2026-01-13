@@ -1,2 +1,3 @@
-web: gunicorn gastos-api.app:app
+gunicorn gastos_api.app:app
+
 
