@@ -1,7 +1,6 @@
 Flask
 flask-cors
 firebase-admin
-gunicorn
 reportlab
 pytz
-flasgger
+gunicorn
